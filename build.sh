@@ -5,20 +5,17 @@ source /opt/buildpiper/shell-functions/str-functions.sh
 source /opt/buildpiper/shell-functions/file-functions.sh
 source /opt/buildpiper/shell-functions/aws-functions.sh
 
-TASK_STATUS=0
+TAG_FILE="data.properties"
 
 CODEBASE_LOCATION="${WORKSPACE}"/"${CODEBASE_DIR}"
-logInfoMessage "I'll do processing at [$CODEBASE_LOCATION]"
+logInfoMessage "I'll create build tag at  [$WORKSPACE] in data.properties file"
 sleep  $SLEEP_DURATION
-cd  "${CODEBASE_LOCATION}"
+cd  "${WORKSPACE}"
 
-TASK_STATUS=0
+TIMESTAMP=$(date +"%m-%d-%y--%H:%M:%S")
+echo "${TIMESTAMP}" >> "${TAG_FILE}" 
+echo "!----------------------------------------------TAG------------------------------------------------------------!"
+cat "{TAG_FILE}"
+TASK_STATUS=?
 
-if [condition]; then
-    logErrorMessage "Done the required operation"
-else
-    TASK_STATUS=1
-    logErrorMessage "Target server not provided please check"
-
-fi
 saveTaskStatus ${TASK_STATUS} ${ACTIVITY_SUB_TASK_CODE}
