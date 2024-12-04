@@ -16,6 +16,6 @@ TIMESTAMP=$(date +"%m-%d-%y--%H:%M:%S")
 echo "${TIMESTAMP}" >> "${TAG_FILE}" 
 echo "!----------------------------------------------TAG------------------------------------------------------------!"
 cat "${TAG_FILE}"
-TASK_STATUS=?
+TASK_STATUS=$?
 
 saveTaskStatus ${TASK_STATUS} ${ACTIVITY_SUB_TASK_CODE}
