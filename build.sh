@@ -12,10 +12,9 @@ logInfoMessage "I'll create build tag at  [$WORKSPACE] in data.properties file"
 sleep  $SLEEP_DURATION
 cd  "${WORKSPACE}"
 
-TIMESTAMP=$(date +"%m-%d-%y--%H:%M:%S")
+TIMESTAMP=$(date +"%m%d%y%H%M%S")
 echo "${TIMESTAMP}" >> "${TAG_FILE}" 
-echo "!----------------------------------------------TAG------------------------------------------------------------!"
-cat "${TAG_FILE}"
+logInfoMessage "TAG : ${TIMESTAMP}"
 TASK_STATUS=$?
 
 saveTaskStatus ${TASK_STATUS} ${ACTIVITY_SUB_TASK_CODE}
